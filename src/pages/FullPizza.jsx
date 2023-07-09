@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import '../scss/app.scss'
 
 const FullPizza = () => {
   let [pizza, setPizza] = React.useState();
@@ -31,10 +32,12 @@ const FullPizza = () => {
   
 
   return (
-    <div className="container">
-      <img src={pizza.imageUrl} alt="" />
-      <h2>{pizza.title}</h2>
-      <h4>{pizza.price}</h4>
+    <div className="container ">
+      <div className="full-pizza">
+        <img src={pizza.imageUrl} alt="#" />
+        <h2>{pizza.title}</h2>
+        <h4>{pizza.price} ₽</h4>
+      </div>
     </div>
   );
 };
