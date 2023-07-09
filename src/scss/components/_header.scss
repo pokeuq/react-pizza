@@ -4,7 +4,8 @@
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
-  @media (max-width: 650px) {
+  @media (max-width: 480px) {
+    
     .container{
       .header__logo{
         div {
@@ -16,9 +17,11 @@
     }
   }
 
-  @media (max-width: 530px) {
-      padding: 40px 0 0 0;
+  @media (max-width: 680px) {
+    padding: 30px 0;
   }
+
+  
   
   // padding: 40px 0 0 0;
   .container {
@@ -27,17 +30,14 @@
     justify-content: space-between;
     flex-wrap: wrap;
 
+    
     @media (max-width: 1060px) {
       justify-content: center;
-      gap: 30px;
+      gap: 25px;
     }
 
     @media (max-width: 530px) {
       flex-direction: column;
-
-      a {
-        margin-bottom: 2rem;
-      }
     }
 
   }

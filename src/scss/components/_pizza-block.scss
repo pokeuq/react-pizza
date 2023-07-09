@@ -1,5 +1,14 @@
 @import '../variables';
 
+.skeleton{
+  @media (max-width: 730px) {
+    margin: 0 auto;
+  }
+  
+}
+
+
+
 .pizza-block {
   width: 280px;
   text-align: center;
