@@ -5,6 +5,10 @@
 
 body {
   background-color: $background;
+  @media (max-width: 380px) {
+    background-color: white;
+  }
+
 }
 
 .wrapper {
@@ -17,8 +21,8 @@ body {
   
   @media (max-width: 520px) {
     width: 100vw;
-    margin: 0px auto;
-  }
+    margin: 0 auto;
+   }
 }
 
 .content {
@@ -274,6 +278,24 @@ body {
         svg {
           path:first-of-type {
             display: none;
+          }
+        }
+        &--disabled {
+          opacity: 0.4;
+          border-color: #787878;
+
+          &:active{
+            transform: none;
+          }
+          &:hover {
+            background-color: transparent;
+            svg path {
+              fill:#787878;
+            }
+          }
+
+          svg path {
+            fill:#787878;
           }
         }
       }
@@ -617,3 +639,22 @@ body {
     height: 40%;
   }
 }
+
+
+// &-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   border-radius: 5px ;
+  
+  
+//   @media (max-width: 1400px) {
+//     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+//     background-color: rgba($color: #000000, $alpha: 0.008);
+//     padding: 12px;
+//   }
+// }
+
+// &__image {
+//   width: 260px;
+//   mix-blend-mode: multiply;
+// }

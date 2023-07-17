@@ -12,9 +12,9 @@
 .pizza-block {
   width: 280px;
   text-align: center;
+ margin: 0 auto;
 
   @media (max-width: 370px) {
-    transform: scale(0.9);
   }
   // margin-bottom: 65px;
 
@@ -22,12 +22,18 @@
     display: flex;
     justify-content: center;
     border-radius: 5px ;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-    padding: 10px 8px;
+    
+    @media (max-width: 1400px) {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+      background-color: rgba($color: #000000, $alpha: 0.008);
+      padding: 10px 8px;
+    }
+    
   }
-
+  
   &__image {
     width: 260px;
+    mix-blend-mode: multiply;
   }
 
   &__title {

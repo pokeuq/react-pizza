@@ -9,12 +9,12 @@ import ModalUnstyled from "../components/Modal";
 
 
 
-const Cart = () => {
+const Cart: React.FC = () => {
 
   const dispatch = useDispatch();
   const {totalPrice, items} = useSelector(selectCart)
 
-  const totalCount = items.reduce( (sum, item ) => sum + item.count, 0)
+  const totalCount = items.reduce( (sum: number, item: any ) => sum + item.count, 0)
 
   
 
@@ -101,7 +101,7 @@ const Cart = () => {
         </div>
         <div className="content__items">
           {
-            items.map( item => <CartItem key={item.id} {...item} />)
+            items.map( (item: any) => <CartItem key={item.id} {...item} />)
           }
           
         </div>

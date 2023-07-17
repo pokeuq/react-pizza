@@ -1,38 +1,51 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectSort, setSort } from "../redux/slices/filterSlice";
+import { selectSort, setSort, sortPropertyEnum } from "../redux/slices/filterSlice";
 
-export const list = [
-  { name: "популярность (+)", sortProperty: "rating" },
-  { name: "популярность (-)", sortProperty: "-rating" },
-  { name: "цена (+)", sortProperty: "price" },
-  { name: "цена (-)", sortProperty: "-price" },
-  { name: "алфавит (+)", sortProperty: "title" },
-  { name: "алфавит (-)", sortProperty: "-title" },
+type SortItem = {
+  name: string;
+  sortProperty: sortPropertyEnum;
+};
+type PopupEvent = MouseEvent & {
+  path: Node[]; 
+  composedPath: (tar?: HTMLElement) => EventTarget[]; 
+  target: HTMLElement; 
+}
+
+export const list: SortItem[] = [
+  { name: "популярность (+)", sortProperty: sortPropertyEnum.RATING_DECS },
+  { name: "популярность (-)", sortProperty: sortPropertyEnum.RATING_ASC },
+  { name: "цена (+)", sortProperty: sortPropertyEnum.PRICE_DECS },
+  { name: "цена (-)", sortProperty: sortPropertyEnum.PRICE_ASC },
+  { name: "алфавит (+)", sortProperty: sortPropertyEnum.TITLE_DECS },
+  { name: "алфавит (-)", sortProperty:sortPropertyEnum.TITLE_ASC  },
 ];
 
 function Sort() {
   const dispatch = useDispatch();
   const sort = useSelector(selectSort);
-  const sortRef = React.useRef();
+  const sortRef = React.useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = React.useState(false);
 
-  const onClickListItem = (obj) => {
+  const onClickListItem = (obj: SortItem) => {
     dispatch(setSort(obj));
     setOpen(false);
   };
 
   React.useEffect(() => {
-    const handleCLickOutside =  (event) => {
-      if (!event.composedPath().includes(sortRef.current)) {
+    const handleCLickOutside = (event: MouseEvent) => {
+
+      const _event = event as PopupEvent
+
+      if (sortRef.current && !_event.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }
     };
 
     document.body.addEventListener("click", handleCLickOutside);
 
-    return () =>  document.body.removeEventListener('click', handleCLickOutside)
+    return () => document.body.removeEventListener("click", handleCLickOutside);
   }, []);
 
   return (
